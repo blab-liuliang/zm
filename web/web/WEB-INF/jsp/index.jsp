@@ -15,5 +15,7 @@
     <a href="/zm/course?name=cet4&edit=true">ZM Edu</a>
     <br />
     <a href="/doll/catch">Doll</a>
+    <br />
+    <a href="/doll/hevc">HEVC</a>
 </body>
 </html>

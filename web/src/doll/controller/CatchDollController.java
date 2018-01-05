@@ -19,6 +19,11 @@ public class CatchDollController {
         return "doll/CatchDoll";
     }
 
+    @RequestMapping(value = "/hevc", method=RequestMethod.GET)
+    public String onTestHevc(){
+        return "doll/hevc";
+    }
+
     @RequestMapping(value="/op", method = RequestMethod.GET)
     public @ResponseBody String onOperationAjax(@RequestParam("type") String type,
                                                 @RequestParam("value") String value){
