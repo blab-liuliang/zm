@@ -39,14 +39,15 @@
         </div>
     </div>
 </div>
+    <script type="text/javascript" src="/RES/js/jsmpeg/jsmpeg.js"></script>
     <script type="text/javascript" src="/RES/js/jsmpeg/buffer.js"></script>
     <script type="text/javascript" src="/RES/js/jsmpeg/canvas2d.js"></script>
     <script type="text/javascript" src="/RES/js/jsmpeg/decoder.js"></script>
-    <script type="text/javascript" src="/RES/js/jsmpeg/jsmpeg.js"></script>
     <script type="text/javascript" src="/RES/js/jsmpeg/ajax.js"></script>
     <script type="text/javascript" src="/RES/js/jsmpeg/ajax-progressive.js"></script>
     <script type="text/javascript" src="/RES/js/jsmpeg/mp2.js"></script>
     <script type="text/javascript" src="/RES/js/jsmpeg/mpeg1.js"></script>
+    <script type="text/javascript" src="/RES/js/jsmpeg/mpeg5.js"></script>
     <script type="text/javascript" src="/RES/js/jsmpeg/player.js"></script>
     <script type="text/javascript" src="/RES/js/jsmpeg/ts.js"></script>
     <script type="text/javascript" src="/RES/js/jsmpeg/video-element.js"></script>
