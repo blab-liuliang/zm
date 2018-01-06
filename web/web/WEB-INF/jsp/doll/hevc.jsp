@@ -56,7 +56,7 @@
     <script type="text/javascript" src="/RES/js/jsmpeg/websocket.js"></script>
     <script type="text/javascript">
         var canvas = document.getElementById('video-canvas');
-        var url = 'ws://124.243.220.24:10002/camera_0';
+        var url = 'ws://118.190.156.61:10002/camera_0';
         var player = new JSMpeg.Player(url, {canvas: canvas});
     </script>
 </body>

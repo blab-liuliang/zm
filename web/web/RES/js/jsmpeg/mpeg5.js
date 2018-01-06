@@ -11434,6 +11434,8 @@ JSMpeg.Decoder.MPEG5Video = (function(){ "use strict";
         this.decoder = new libde265.Decoder();
         this.decoder.set_framerate_ratio(30);
         this.decoder.set_image_callback(function(image) {
+            var w = image.get_width();
+            var h = image.get_height();
             image.free();
         });
     };
@@ -11454,7 +11456,32 @@ JSMpeg.Decoder.MPEG5Video = (function(){ "use strict";
         }
     };
 
+    MPEG5.prototype._set_error = function(error, message) {
+        if (this.error_cb) {
+            this.error_cb(error, message);
+        }
+    };
+
     MPEG5.prototype.decode = function() {
+
+        this.decoder.decode(function(err) {
+            switch(err) {
+                case libde265.DE265_ERROR_WAITING_FOR_INPUT_DATA:
+                    //setTimeout(decode, 0);
+                    return;
+
+                default:
+                    if (!libde265.de265_isOK(err)) {
+                        this._set_error(err, libde265.de265_get_error_text(err));
+                        return;
+                    }
+            }
+
+            return;
+            //decoder.free();
+            //that.stop();
+        });
+
         return true;
     };
 
