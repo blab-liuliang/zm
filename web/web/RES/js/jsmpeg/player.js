@@ -29,11 +29,11 @@ JSMpeg.Player = (function(){ "use strict";
 
         if (options.video !== false) {
             this.video = new JSMpeg.Decoder.MPEG5Video(options);
-            //this.renderer = !options.disableGl && JSMpeg.Renderer.WebGL.IsSupported()
-            //    ? new JSMpeg.Renderer.WebGL(options)
-            //    : new JSMpeg.Renderer.Canvas2D(options);
+            this.renderer = !options.disableGl && JSMpeg.Renderer.WebGL.IsSupported()
+                ? new JSMpeg.Renderer.WebGL(options)
+                : new JSMpeg.Renderer.Canvas2D(options);
             this.demuxer.connect(JSMpeg.Demuxer.TS.STREAM.VIDEO_1, this.video);
-            //this.video.connect(this.renderer);
+            this.video.connect(this.renderer);
         }
 
         if (options.audio !== false && JSMpeg.AudioOutput.WebAudio.IsSupported()) {

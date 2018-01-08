@@ -30,8 +30,8 @@
       <file leaf-file-name="mpeg5.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/RES/js/jsmpeg/mpeg5.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-537">
-              <caret line="12" column="8" lean-forward="false" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
+            <state relative-caret-position="-857">
+              <caret line="14" column="45" lean-forward="false" selection-start-line="14" selection-start-column="45" selection-end-line="14" selection-end-column="45" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -39,11 +39,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="libde265.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="libde265.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/RES/js/jsmpeg/libde265.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="181440">
-              <caret line="11200" column="40" lean-forward="false" selection-start-line="11200" selection-start-column="40" selection-end-line="11200" selection-end-column="40" />
+            <state relative-caret-position="150">
+              <caret line="11208" column="0" lean-forward="true" selection-start-line="11208" selection-start-column="0" selection-end-line="11208" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -52,8 +52,8 @@
       <file leaf-file-name="webgl.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/RES/js/jsmpeg/webgl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="153" column="14" lean-forward="true" selection-start-line="153" selection-start-column="14" selection-end-line="153" selection-end-column="14" />
+            <state relative-caret-position="247">
+              <caret line="160" column="39" lean-forward="true" selection-start-line="160" selection-start-column="39" selection-end-line="160" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -62,7 +62,7 @@
       <file leaf-file-name="ts.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/RES/js/jsmpeg/ts.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="897">
+            <state relative-caret-position="1350">
               <caret line="90" column="39" lean-forward="false" selection-start-line="90" selection-start-column="26" selection-end-line="90" selection-end-column="39" />
               <folding />
             </state>
@@ -79,11 +79,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="player.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="player.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/RES/js/jsmpeg/player.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="326">
-              <caret line="34" column="79" lean-forward="true" selection-start-line="34" selection-start-column="79" selection-end-line="34" selection-end-column="79" />
+              <caret line="35" column="12" lean-forward="false" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -102,8 +102,8 @@
       <file leaf-file-name="buffer.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/RES/js/jsmpeg/buffer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1500">
-              <caret line="100" column="5" lean-forward="false" selection-start-line="64" selection-start-column="4" selection-end-line="100" selection-end-column="5" />
+            <state relative-caret-position="298">
+              <caret line="81" column="50" lean-forward="true" selection-start-line="81" selection-start-column="50" selection-end-line="81" selection-end-column="50" />
               <folding />
             </state>
           </provider>
@@ -139,6 +139,8 @@
       <find>de265_get_image_plane</find>
       <find>textureY</find>
       <find>createTexture</find>
+      <find>shouldCreateUnclampedViews</find>
+      <find>allowsClampedTextureData</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -193,10 +195,10 @@
         <option value="$PROJECT_DIR$/out/artifacts/web_war_exploded/RES/js/jsmpeg/mpeg5.js" />
         <option value="$PROJECT_DIR$/web/RES/js/jsmpeg/buffer.js" />
         <option value="$PROJECT_DIR$/web/WEB-INF/jsp/doll/hevc.jsp" />
-        <option value="$PROJECT_DIR$/web/RES/js/jsmpeg/libde265.js" />
+        <option value="$PROJECT_DIR$/web/RES/js/jsmpeg/player.js" />
         <option value="$PROJECT_DIR$/web/RES/js/jsmpeg/webgl.js" />
         <option value="$PROJECT_DIR$/web/RES/js/jsmpeg/mpeg5.js" />
-        <option value="$PROJECT_DIR$/web/RES/js/jsmpeg/player.js" />
+        <option value="$PROJECT_DIR$/web/RES/js/jsmpeg/libde265.js" />
       </list>
     </option>
   </component>
@@ -232,7 +234,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -299,9 +301,9 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="AndroidView" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -588,12 +590,14 @@
       <workItem from="1515238940224" duration="3030000" />
       <workItem from="1515376111435" duration="4826000" />
       <workItem from="1515387335368" duration="2988000" />
-      <workItem from="1515396692888" duration="870000" />
+      <workItem from="1515396692888" duration="994000" />
+      <workItem from="1515398830231" duration="216000" />
+      <workItem from="1515399632638" duration="1518000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="86319000" />
+    <option name="totallyTimeSpent" value="88177000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -625,11 +629,11 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32958034" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32139203" sideWeight="0.65628815" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32958034" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32958034" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24725275" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25335777" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -919,23 +923,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="17" column="4" lean-forward="false" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/RES/js/jsmpeg/decoder.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" column="29" lean-forward="false" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/RES/js/jsmpeg/buffer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1500">
-          <caret line="100" column="5" lean-forward="false" selection-start-line="64" selection-start-column="4" selection-end-line="100" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -955,44 +942,60 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/RES/js/jsmpeg/libde265.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181440">
-          <caret line="11200" column="40" lean-forward="false" selection-start-line="11200" selection-start-column="40" selection-end-line="11200" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/RES/js/jsmpeg/ts.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="897">
+        <state relative-caret-position="1350">
           <caret line="90" column="39" lean-forward="false" selection-start-line="90" selection-start-column="26" selection-end-line="90" selection-end-column="39" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/RES/js/jsmpeg/webgl.js">
+    <entry file="file://$PROJECT_DIR$/web/RES/js/jsmpeg/buffer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="153" column="14" lean-forward="true" selection-start-line="153" selection-start-column="14" selection-end-line="153" selection-end-column="14" />
+        <state relative-caret-position="298">
+          <caret line="81" column="50" lean-forward="true" selection-start-line="81" selection-start-column="50" selection-end-line="81" selection-end-column="50" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/RES/js/jsmpeg/mpeg5.js">
+    <entry file="file://$PROJECT_DIR$/web/RES/js/jsmpeg/decoder.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-537">
-          <caret line="12" column="8" lean-forward="false" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
+        <state relative-caret-position="435">
+          <caret line="29" column="29" lean-forward="false" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="29" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/RES/js/jsmpeg/player.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="326">
-          <caret line="34" column="79" lean-forward="true" selection-start-line="34" selection-start-column="79" selection-end-line="34" selection-end-column="79" />
+          <caret line="35" column="12" lean-forward="false" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/RES/js/jsmpeg/webgl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="160" column="39" lean-forward="true" selection-start-line="160" selection-start-column="39" selection-end-line="160" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/RES/js/jsmpeg/mpeg5.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-857">
+          <caret line="14" column="45" lean-forward="false" selection-start-line="14" selection-start-column="45" selection-end-line="14" selection-end-column="45" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/RES/js/jsmpeg/libde265.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="11208" column="0" lean-forward="true" selection-start-line="11208" selection-start-column="0" selection-end-line="11208" selection-end-column="0" />
           <folding />
         </state>
       </provider>

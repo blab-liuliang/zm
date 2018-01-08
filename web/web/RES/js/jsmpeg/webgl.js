@@ -151,16 +151,16 @@ WebGLRenderer.prototype.render = function(y, cb, cr) {
 	var gl = this.gl;
 	var w = ((this.width + 15) >> 4) << 4,
 		h = this.height,
-		w2 = w,
+		w2 = w >> 1,
 		h2 = h >> 1;
 
 	// In some browsers WebGL doesn't like Uint8ClampedArrays (this is a bug
 	// and should be fixed soon-ish), so we have to create a Uint8Array view 
 	// for each plane.
 	if (this.shouldCreateUnclampedViews) {
-		y = new Uint8Array(y.buffer),
-		cb = new Uint8Array(cb.buffer),
-		cr = new Uint8Array(cr.buffer);	
+		//y = new Uint8Array(y.buffer),
+		//cb = new Uint8Array(cb.buffer),
+		//cr = new Uint8Array(cr.buffer);
 	}
 
 	gl.useProgram(this.program);

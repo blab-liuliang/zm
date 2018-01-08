@@ -10,7 +10,7 @@ JSMpeg.Decoder.MPEG5Video = (function(){ "use strict";
         this.height = 0;
         this.image_data = null;
         this.canvas = options.canvas;
-        this.ctx = options.canvas.getContext("2d")
+        //this.ctx = options.canvas.getContext("2d")
         this.cb = 0;
         this.decoder = new libde265.Decoder();
         this.decoder.set_framerate_ratio(30);
@@ -38,26 +38,6 @@ JSMpeg.Decoder.MPEG5Video = (function(){ "use strict";
     };
 
     MPEG5.prototype.decodePicture = function(image) {
-        var w = image.get_width();
-        var h = image.get_height();
-        if (w != this.canvas.width || h != this.canvas.height || !this.image_data) {
-            this.canvas.width = w;
-            this.canvas.height = h;
-            this.image_data = this.ctx.createImageData(w, h);
-            var image_data = this.image_data.data;
-            for (var i=0; i<w*h; i++) {
-                image_data[i*4+3] = 255;
-            }
-        }
-
-        var that = this;
-        image.display(this.image_data, function(display_image_data) {
-            that.ctx.putImageData(display_image_data, 0, 0);
-        });
-
-
-        return;
-
         this.currentFrame++;
 
         var w = image.get_width();
@@ -80,10 +60,10 @@ JSMpeg.Decoder.MPEG5Video = (function(){ "use strict";
         // Invoke decode callbacks
         if (this.destination) {
             y = this.decoder.HEAPU8_subarray(y, y+(h*stridey));
-            u = this.decoder.HEAPU8_subarray(u, u+(h*strideu));
-            v = this.decoder.HEAPU8_subarray(v, v+(h*stridev));
+            u = this.decoder.HEAPU8_subarray(u, u+(h*strideu/2));
+            v = this.decoder.HEAPU8_subarray(v, v+(h*stridev/2));
 
-            this.destination.render( y, u, v);
+            this.destination.render( y, v, u);
         }
 
         image.free();
