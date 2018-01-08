@@ -11103,11 +11103,12 @@ Decoder.prototype.decode = function(callback) {
         }
 
         var img = libde265.de265_get_next_picture(this.ctx);
-        if (img) {
+        while (img) {
             if (this.image_callback) {
                 this.image_callback(new Image(this, img));
             }
-            break;
+
+            img = libde265.de265_get_next_picture(this.ctx);
         }
     }
     callback(err);

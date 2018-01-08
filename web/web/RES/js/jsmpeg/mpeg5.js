@@ -13,7 +13,8 @@ JSMpeg.Decoder.MPEG5Video = (function(){ "use strict";
         //this.ctx = options.canvas.getContext("2d")
         this.cb = 0;
         this.decoder = new libde265.Decoder();
-        this.decoder.set_framerate_ratio(30);
+        //this.decoder.set_framerate_ratio(30);
+        //this.decoder.disable_filters(true);
     };
 
     MPEG5.prototype = Object.create(JSMpeg.Decoder.Base.prototype);
@@ -80,23 +81,18 @@ JSMpeg.Decoder.MPEG5Video = (function(){ "use strict";
             });
         }
 
-        this.decoder.decode(function(err) {
-            switch(err) {
-                case libde265.DE265_ERROR_WAITING_FOR_INPUT_DATA:
-                    //setTimeout(decode, 0);
-                    return;
+        var result = libde265.DE265_OK;
+        while(libde265.de265_isOK(result)){
+            this.decoder.decode(function(err) {
+                result = err;
 
-                default:
-                    if (!libde265.de265_isOK(err)) {
-                        this._set_error(err, libde265.de265_get_error_text(err));
-                        return;
-                    }
-            }
+                if(err!=libde265.DE265_ERROR_WAITING_FOR_INPUT_DATA){
+                    // impossible
+                    this._set_error(err, libde265.de265_get_error_text(err));
+                }
+            });
+        }
 
-            return;
-            //decoder.free();
-            //that.stop();
-        });
 
         return true;
     };
