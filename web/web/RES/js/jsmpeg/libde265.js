@@ -11197,6 +11197,10 @@ Decoder.prototype.convert_yuv2rgb = function(chroma, y, u, v, w, h, stridey, str
     this.converter.convert(chroma, y, u, v, w, h, stridey, strideu, stridev, bppy, bppu, bppv, imageData, callback);
 };
 
+Decoder.prototype.HEAPU8_subarray = function(begin, end) {
+    return HEAPU8.subarray( begin, end);
+};
+
 /**
  * @expose
  */

@@ -8,6 +8,7 @@ JSMpeg.Decoder.MPEG5Video = (function(){ "use strict";
 
         this.width = 0;
         this.height = 0;
+        this.image_data = null;
         this.cb = 0;
         this.decoder = new libde265.Decoder();
         this.decoder.set_framerate_ratio(30);
@@ -17,7 +18,6 @@ JSMpeg.Decoder.MPEG5Video = (function(){ "use strict";
     MPEG5.prototype.constructor = MPEG5;
 
     MPEG5.prototype.write = function(pts, buffers) {
-
         var isArrayOfBuffers = (typeof(buffers[0]) === 'object');
         if (isArrayOfBuffers) {
             for (var i = 0; i < buffers.length; i++) {
@@ -40,10 +40,12 @@ JSMpeg.Decoder.MPEG5Video = (function(){ "use strict";
 
         var w = image.get_width();
         var h = image.get_height();
-        var stride = 0;
-        var y = libde265.de265_get_image_plane(image.img, 0, stride);
-        var u = libde265.de265_get_image_plane(image.img, 1, stride);
-        var v = libde265.de265_get_image_plane(image.img, 2, stride);
+        var y = libde265.de265_get_image_plane(image.img, 0, 0);
+        var u = libde265.de265_get_image_plane(image.img, 1, 0);
+        var v = libde265.de265_get_image_plane(image.img, 2, 0);
+        var stridey = w;
+        var strideu = w / 2;
+        var stridev = w / 2;
 
         if (this.destination) {
             if (w != this.width || h != this.height) {
@@ -55,6 +57,10 @@ JSMpeg.Decoder.MPEG5Video = (function(){ "use strict";
 
         // Invoke decode callbacks
         if (this.destination) {
+            y = this.decoder.HEAPU8_subarray(y, y+(h*stridey));
+            u = this.decoder.HEAPU8_subarray(u, u+(h*strideu));
+            v = this.decoder.HEAPU8_subarray(v, v+(h*stridev));
+
             this.destination.render( y, u, v);
         }
 
