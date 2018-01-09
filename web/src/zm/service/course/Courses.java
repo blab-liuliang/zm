@@ -5,6 +5,7 @@ import com.aliyun.oss.model.OSSObject;
 import com.aliyun.oss.model.OSSObjectSummary;
 import com.aliyun.oss.model.ObjectListing;
 import com.google.gson.Gson;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -38,6 +39,7 @@ public class Courses {
      * @param courseName
      * @return
      */
+    @Cacheable(value = "default")
     public CourseMeta getCourseMeta(String courseName){
         // 获取课程配置文件
         OSSClient oss = new OSSClient( endPoint, accessKeyId, accessKeySecret);
