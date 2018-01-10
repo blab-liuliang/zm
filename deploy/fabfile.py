@@ -3,9 +3,12 @@ from fabric.api import *
 from fabric.context_managers import *
 from fabric.contrib.console import confirm
 
-env.user = "root"
-env.hosts = ["120.25.122.107"]
+# group servers
+env.roledefs = {
+    "zm_web_server" : ["root@120.25.122.107"]
+}
 
+@roles("zm_web_server")
 def upload_web():
     run("sudo rm -r /opt/tomcat/webapps/ROOT")
     run("sudo mkdir /opt/tomcat/webapps/ROOT")
