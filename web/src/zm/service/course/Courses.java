@@ -8,6 +8,7 @@ import com.google.gson.Gson;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -22,14 +23,6 @@ public class Courses {
     public Courses(){
     }
 
-
-    public Course getCourse(String name){
-        Course course  = new Course();
-        course.setName( name);
-
-        return course;
-    }
-
     /***
      * 获取课程列表
      */
@@ -40,7 +33,7 @@ public class Courses {
      * @return
      */
     @Cacheable(value = "default")
-    public CourseMeta getCourseMeta(String courseName){
+    public List<UnitMeta> getUnitMetas(String courseName){
         // 获取课程配置文件
         OSSClient oss = new OSSClient( endPoint, accessKeyId, accessKeySecret);
 
@@ -48,10 +41,7 @@ public class Courses {
         String courseLocation = coursesLocation + courseName + "/";
         List<OSSObjectSummary> objSummarys = oss.listObjects( bucketName, courseLocation).getObjectSummaries();
 
-        CourseMeta courseMeta = new CourseMeta();
-        courseMeta.setURL(rootURL);
-        courseMeta.setName(courseName);
-        courseMeta.setIcon( rootURL + coursesLocation + courseName + "/icon.png");
+        List<UnitMeta> unitMetas = new ArrayList<>();
 
         for(OSSObjectSummary summary : objSummarys){
             String key = summary.getKey();
@@ -63,10 +53,16 @@ public class Courses {
                 unitMeta.setName(unitName);
                 unitMeta.setIcon(rootURL + summary.getKey() + "icon.png");
 
-                courseMeta.addUnitMeta(unitMeta);
+                unitMetas.add(unitMeta);
             }
         }
 
-        return  courseMeta;
+        return unitMetas;
+    }
+
+    public List<LessonMeta> getLessonMetas(String courseName, String unitName){
+        List<LessonMeta> lessonMetas = new ArrayList<>();
+
+        return lessonMetas;
     }
 }

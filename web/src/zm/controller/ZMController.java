@@ -6,8 +6,10 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import zm.service.course.CourseMeta;
 import zm.service.course.Courses;
+import zm.service.course.UnitMeta;
+
+import java.util.List;
 
 @Controller
 @RequestMapping(value="/zm", method = RequestMethod.GET)
@@ -44,9 +46,8 @@ public class ZMController {
                             @RequestParam("name") String courseName,
                             @RequestParam("edit") boolean edit){
 
-
-        CourseMeta meta = courses.getCourseMeta(courseName);
-        model.addAttribute("courseMeta", meta);
+        List<UnitMeta> meta = courses.getUnitMetas(courseName);
+        model.addAttribute("unitMetas", meta);
 
         return "zm/course";
     }
@@ -55,5 +56,18 @@ public class ZMController {
     public String addCourse(@RequestParam("name") String courseName){
 
         return "";
+    }
+
+    /**
+     * 显示单元内容页面
+     */
+    @RequestMapping(value="/unit", method = RequestMethod.GET)
+    public String getUnit(ModelMap model,
+                          @RequestParam("course") String courseName,
+                          @RequestParam("unit") String unitName){
+
+
+
+        return "zm/unit";
     }
 }

@@ -1,4 +1,4 @@
-package zm.service.course;
+package zm.service.course.exercise;
 
 public class ExerciseVideoMarkDown implements Exercise {
     private String  title = "None";

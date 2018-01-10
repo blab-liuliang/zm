@@ -26,7 +26,7 @@
         </div-->
 
         <div class="row">
-            <c:forEach var="unitMeta" items="${courseMeta.unitMetas}" varStatus="status">
+            <c:forEach var="unitMeta" items="${unitMetas}" varStatus="status">
                 <div class="col-sm-6 col-md-3">
                     <div class="thumbnail" align="center">
                         <img src="${unitMeta.icon}">

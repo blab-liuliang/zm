@@ -1,4 +1,4 @@
 package zm.service.course;
 
-public interface Exercise {
+public class LessonMeta {
 }
