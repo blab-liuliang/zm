@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>智盟教育</title>
     <link rel="shortcut icon" href="/RES/img/logo.ico" type="image/x-icon" />
 </head>
 <body>

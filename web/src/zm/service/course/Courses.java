@@ -52,6 +52,7 @@ public class Courses {
                 UnitMeta unitMeta = new UnitMeta();
                 unitMeta.setName(unitName);
                 unitMeta.setIcon(rootURL + summary.getKey() + "icon.png");
+                unitMeta.setLink(String.format("unit?course=%s&unit=%s", courseName, unitName));
 
                 unitMetas.add(unitMeta);
             }
@@ -60,8 +61,44 @@ public class Courses {
         return unitMetas;
     }
 
+    // 获取单元图标链接地址
+    public String getUnitIconUrl(String courseName, String unitName){
+
+        String rootURL = "http://" + bucketName + "." + endPoint + "/";
+        String unitLocation = coursesLocation + courseName + "/" + unitName + "/";
+
+        return rootURL + unitLocation + "icon.png";
+    }
+
+    /**
+     * 获取课程内容
+     */
+    @Cacheable(value = "default")
     public List<LessonMeta> getLessonMetas(String courseName, String unitName){
+
+        // 获取课程配置文件
+        OSSClient oss = new OSSClient( endPoint, accessKeyId, accessKeySecret);
+
+        String rootURL = "http://" + bucketName + "." + endPoint + "/";
+        String unitLocation = coursesLocation + courseName + "/" + unitName + "/";
+        List<OSSObjectSummary> objSummarys = oss.listObjects( bucketName, unitLocation).getObjectSummaries();
+
         List<LessonMeta> lessonMetas = new ArrayList<>();
+
+        for(OSSObjectSummary summary : objSummarys){
+            String key = summary.getKey();
+            if( key.endsWith("lesson") && key.length() > unitLocation.length()){
+                String lessonName = summary.getKey().substring( unitLocation.length());
+                String lessonNameSplits[] = lessonName.split("\\.");
+
+                LessonMeta lessonMeta = new LessonMeta();
+                lessonMeta.setName(lessonNameSplits[1]);
+                //lessonMeta.setIcon(rootURL + summary.getKey() + "icon.png");
+                lessonMeta.setLink(String.format("lesson?course=%s&unit=%s&lesson=%s", courseName, unitName, lessonName));
+
+                lessonMetas.add(lessonMeta);
+            }
+        }
 
         return lessonMetas;
     }
