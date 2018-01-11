@@ -4,3 +4,4 @@ web/.idea/
 web/.DS_Store
 web/web/.DS_Store
 *.pyc
+web/.idea/workspace.xml
