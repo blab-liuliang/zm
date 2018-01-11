@@ -9,7 +9,8 @@ import {
   Platform,
   StyleSheet,
   Text,
-  View
+  View,
+  WebView
 } from 'react-native';
 
 const instructions = Platform.select({
@@ -22,17 +23,10 @@ const instructions = Platform.select({
 export default class App extends Component<{}> {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Hello World!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit App.js
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
-      </View>
+      <WebView
+        source={{uri: 'http://www.albertlab.cn:8080'}}
+        style={{marginTop: 20}}
+      />
     );
   }
 }
