@@ -76,4 +76,17 @@ public class ZMController {
 
         return "zm/unit";
     }
+
+    /**
+     * 显示课程内容
+     */
+    @RequestMapping(value="/lesson", method = RequestMethod.GET)
+    public String getLesson(ModelMap model,
+                            @RequestParam("course") String courseName,
+                            @RequestParam("unit") String unitName,
+                            @RequestParam("lesson") String lessonName){
+
+
+        return "zm/lesson";
+    }
 }

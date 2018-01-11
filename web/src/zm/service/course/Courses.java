@@ -71,7 +71,7 @@ public class Courses {
     }
 
     /**
-     * 获取课程内容
+     * 获取单元内课程信息
      */
     @Cacheable(value = "default")
     public List<LessonMeta> getLessonMetas(String courseName, String unitName){
@@ -101,5 +101,16 @@ public class Courses {
         }
 
         return lessonMetas;
+    }
+
+
+    /**
+     * 获取课程内容
+     */
+    public Lesson getLesson(String courseName, String unitName, String lessonName){
+
+        Lesson lesson = new Lesson();
+
+        return lesson;
     }
 }
