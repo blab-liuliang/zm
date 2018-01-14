@@ -37,7 +37,7 @@ public class Courses {
      * @param courseName
      * @return
      */
-    @Cacheable(value = "default")
+    @Cacheable(value = "courses")
     public List<UnitMeta> getUnitMetas(String courseName){
         // 获取课程配置文件
         OSSClient oss = new OSSClient( endPoint, accessKeyId, accessKeySecret);
@@ -78,7 +78,7 @@ public class Courses {
     /**
      * 获取单元内课程信息
      */
-    @Cacheable(value = "default")
+    @Cacheable(value = "courses")
     public List<LessonMeta> getLessonMetas(String courseName, String unitName){
 
         // 获取课程配置文件
@@ -112,6 +112,7 @@ public class Courses {
     /**
      * 获取课程内容
      */
+    @Cacheable(value = "courses")
     public Lesson getLesson(String courseName, String unitName, String lessonName){
 
         // 获取课程配置文件

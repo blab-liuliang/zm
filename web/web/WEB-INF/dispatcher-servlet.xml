@@ -19,6 +19,9 @@
                 <bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean">
                     <property name="name" value="default"></property>
                 </bean>
+                <bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean">
+                    <property name="name" value="courses"></property>
+                </bean>
             </set>
         </property>
     </bean>
