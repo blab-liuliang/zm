@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import zm.service.course.Courses;
 import zm.service.course.LessonMeta;
 import zm.service.course.UnitMeta;
+import zm.service.course.Lesson;
 
 import java.util.List;
 
@@ -86,6 +87,8 @@ public class ZMController {
                             @RequestParam("unit") String unitName,
                             @RequestParam("lesson") String lessonName){
 
+        Lesson lesson = courses.getLesson( courseName, unitName, lessonName);
+        model.addAttribute("lesson", lesson);
 
         return "zm/lesson";
     }

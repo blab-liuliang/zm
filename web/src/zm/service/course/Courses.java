@@ -5,9 +5,14 @@ import com.aliyun.oss.model.OSSObject;
 import com.aliyun.oss.model.OSSObjectSummary;
 import com.aliyun.oss.model.ObjectListing;
 import com.google.gson.Gson;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.ParseException;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -109,7 +114,33 @@ public class Courses {
      */
     public Lesson getLesson(String courseName, String unitName, String lessonName){
 
-        Lesson lesson = new Lesson();
+        // 获取课程配置文件
+        OSSClient oss = new OSSClient( endPoint, accessKeyId, accessKeySecret);
+
+        String rootURL = "http://" + bucketName + "." + endPoint + "/";
+        String lessonLocation = coursesLocation + courseName + "/" + unitName + "/" + lessonName;
+
+        OSSObject obj = oss.getObject(bucketName, lessonLocation);
+        InputStream inputStream = obj.getObjectContent();
+
+        Lesson lesson = null;
+
+        try{
+            JSONParser jsonParser = new JSONParser();
+            JSONObject jsonObject = (JSONObject)jsonParser.parse( new InputStreamReader(inputStream, "UTF-8"));
+
+            lesson = new Lesson(jsonObject);
+
+            return lesson;
+
+        } catch (java.io.UnsupportedEncodingException e){
+            e.printStackTrace();
+        } catch (java.io.IOException e){
+            e.printStackTrace();
+        } catch (ParseException e){
+            e.printStackTrace();
+        }
+
 
         return lesson;
     }
