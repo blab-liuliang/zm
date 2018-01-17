@@ -9,7 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>智盟教育</title>
+    <title>${lesson.title}</title>
     <link rel="shortcut icon" href="/RES/img/logo.ico" type="image/x-icon" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -18,19 +18,18 @@
 </head>
 <body>
     <div class="container" >
-        <h1>${lesson.title}</h1>
-
         <c:forEach var="exercise" items="${lesson.exercises}" varStatus="status">
             <c:choose>
                 <c:when test="${exercise.type=='choice'}">
-                    <h1>${exercise.question}</h1>
-
-                    <c:forEach var="option" items="${exercise.options}" varStatus="status">
-                        <h3>${option}</h3>
-                    </c:forEach>
-
-                    <h2>${exercise.answer}</h2>
-                    <h2>${exercise.hint}</h2>
+                    <h6>${exercise.question}</h6>
+                    <form>
+                        <c:forEach var="option" items="${exercise.options}" varStatus="optionStatus">
+                            <input type="radio" name="single" value="${option}" /> ${option} <br />
+                        </c:forEach>
+                        <input type="hidden" value="${exercise.answer}" />
+                        <input type="hidden" value="${exercise.hint}" />
+                        <input type="submit" value="提交">
+                    </form>
                 </c:when>
 
                 <c:otherwise>
