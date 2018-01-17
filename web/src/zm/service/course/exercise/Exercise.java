@@ -1,4 +1,10 @@
 package zm.service.course.exercise;
 
-public interface Exercise {
+public class Exercise {
+
+    protected String type;
+
+    public String getType(){
+        return type;
+    }
 }

@@ -17,6 +17,27 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 </head>
 <body>
-    <h1>${lesson.title}</h1>
+    <div class="container" >
+        <h1>${lesson.title}</h1>
+        
+        <c:forEach var="exercise" items="${lesson.exercises}" varStatus="status">
+            <c:choose>
+                <c:when test="${exercise.type=='choice'}">
+                    <h1>${exercise.question}</h1>
+
+                    <c:forEach var="option" items="${exercise.options}" varStatus="status">
+                        <h3>${option}</h3>
+                    </c:forEach>
+
+                    <h2>${exercise.answer}</h2>
+                    <h2>${exercise.hint}</h2>
+                </c:when>
+
+                <c:otherwise>
+                    Error Exercise Type [${exercise.type}] <br />
+                </c:otherwise>
+            </c:choose>
+        </c:forEach>
+    </div>
 </body>
 </html>
