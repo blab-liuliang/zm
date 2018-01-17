@@ -19,7 +19,7 @@
 <body>
     <div class="container" >
         <h1>${lesson.title}</h1>
-        
+
         <c:forEach var="exercise" items="${lesson.exercises}" varStatus="status">
             <c:choose>
                 <c:when test="${exercise.type=='choice'}">
