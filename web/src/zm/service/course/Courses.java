@@ -31,6 +31,34 @@ public class Courses {
     /***
      * 获取课程列表
      */
+    @Cacheable(value = "courses")
+    public List<CourseMeta> getCourseMetas(){
+        // 获取课程配置文件
+        OSSClient oss = new OSSClient( endPoint, accessKeyId, accessKeySecret);
+
+        String rootURL = "http://" + bucketName + "." + endPoint + "/";
+        String courseLocation = coursesLocation;
+        List<OSSObjectSummary> objSummarys = oss.listObjects( bucketName, courseLocation).getObjectSummaries();
+
+        List<CourseMeta> courseMetas = new ArrayList<>();
+
+        for(OSSObjectSummary summary : objSummarys){
+            String key = summary.getKey();
+            if( key.endsWith("/") && key.length() > courseLocation.length()){
+                String substr = summary.getKey().substring( courseLocation.length());
+                String courseName = substr.substring( 0, substr.length()-1);
+
+                CourseMeta courseMeta = new CourseMeta();
+                courseMeta.setName(courseName);
+                courseMeta.setIcon(rootURL + summary.getKey() + "icon.png");
+                courseMeta.setLink("courses");
+
+                courseMetas.add(courseMeta);
+            }
+        }
+
+        return courseMetas;
+    }
 
     /***
      * 获取单元描述信息
@@ -119,7 +147,8 @@ public class Courses {
         OSSClient oss = new OSSClient( endPoint, accessKeyId, accessKeySecret);
 
         String rootURL = "http://" + bucketName + "." + endPoint + "/";
-        String lessonLocation = coursesLocation + courseName + "/" + unitName + "/" + lessonName;
+        String unitURL = coursesLocation + courseName + "/" + unitName + "/";
+        String lessonLocation = unitURL + lessonName;
 
         OSSObject obj = oss.getObject(bucketName, lessonLocation);
         InputStream inputStream = obj.getObjectContent();
@@ -131,6 +160,7 @@ public class Courses {
             JSONObject jsonObject = (JSONObject)jsonParser.parse( new InputStreamReader(inputStream, "UTF-8"));
 
             lesson = new Lesson(jsonObject);
+            lesson.setUrl( rootURL + unitURL);
 
             return lesson;
 

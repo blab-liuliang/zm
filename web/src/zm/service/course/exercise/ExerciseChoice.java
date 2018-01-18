@@ -27,11 +27,6 @@ public class ExerciseChoice extends Exercise {
         }
     }
 
-    @Override
-    public String getType(){
-        return type;
-    }
-
     public String getQuestion(){
         return question;
     }

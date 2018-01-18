@@ -32,6 +32,17 @@
                     </form>
                 </c:when>
 
+                <c:when test="${exercise.type=='video'}">
+                    <video src="${exercise.url}" controls="controls">
+                        您的浏览器不支持 video 标签。
+                    </video>
+                </c:when>
+
+                <c:when test="${exercise.type=='markdown'}">
+
+
+                </c:when>
+
                 <c:otherwise>
                     Error Exercise Type [${exercise.type}] <br />
                 </c:otherwise>

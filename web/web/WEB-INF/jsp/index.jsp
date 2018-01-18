@@ -12,6 +12,8 @@
     <link rel="shortcut icon" href="/RES/img/logo.ico" type="image/x-icon" />
 </head>
 <body>
+    <a href="/zm/course?name=example&edit=true">Example</a>
+    <br />
     <a href="/zm/course?name=cet4&edit=true">ZM Edu</a>
     <br />
     <a href="/doll/catch">Doll</a>
