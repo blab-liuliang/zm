@@ -29,7 +29,7 @@ public class ZMController {
     @RequestMapping(value="/courses", method = RequestMethod.GET)
     public String getCourses(ModelMap model){
 
-       //model.addAttribute("coursesSummary", courses.getSummary());
+       model.addAttribute("courses", courses.getCourseMetas());
 
         return "zm/courses";
     }

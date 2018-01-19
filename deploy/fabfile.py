@@ -15,3 +15,7 @@ def upload_web():
     put(os.getcwd() + "/../web/out/artifacts/web_war_exploded/RES", "/opt/tomcat/webapps/ROOT/", use_sudo=True)
     put(os.getcwd() + "/../web/out/artifacts/web_war_exploded/WEB-INF", "/opt/tomcat/webapps/ROOT/", use_sudo=True)
     run("sudo systemctl restart tomcat")
+
+@roles("zm_web_server")
+def restart_tomcat():
+    run("sudo systemctl restart tomcat")
