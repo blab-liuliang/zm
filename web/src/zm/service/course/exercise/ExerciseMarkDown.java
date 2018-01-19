@@ -25,7 +25,7 @@ public class ExerciseMarkDown extends Exercise{
         this.type = jsonObj.get("type").toString();
         this.lesson = lesson;
         this.url = jsonObj.get("url").toString();
-        this.md = Courses.getInst().getMarkDown( lesson.getOssUrl() + url);
+        this.md = Courses.getInst().getMarkDown( lesson.getOssUrl(), url);
         this.html = Markdown2Html.getInst().toHtml( this.md);
     }
 

@@ -191,15 +191,20 @@ public class Courses {
      * 获取MarkDown内容
      */
     @Cacheable(value = "courses")
-    public String getMarkDown(String markDownUrl){
+    public String getMarkDown( String ossUrl, String markDownName){
         // 获取课程配置文件
         OSSClient oss = new OSSClient( endPoint, accessKeyId, accessKeySecret);
 
-        OSSObject obj = oss.getObject(bucketName, markDownUrl);
+        OSSObject obj = oss.getObject(bucketName, ossUrl + markDownName);
         InputStream inputStream = obj.getObjectContent();
 
         try{
             String markdown = IOUtils.readStreamAsString(inputStream, "UTF-8");
+
+            String rootURL = "http://" + bucketName + "." + endPoint + "/";
+            String markdownUrl = rootURL + ossUrl;
+            markdown = markdown.replace("${OSS_CURRENT_DIR}/", markdownUrl);
+
             return markdown;
 
         } catch ( java.io.IOException e){
