@@ -15,6 +15,6 @@ public class ExerciseVideo extends Exercise{
     }
 
     public String getUrl(){
-        return lesson.getUrl() + url;
+        return lesson.getDomain() + lesson.getOssUrl() + url;
     }
 }

@@ -18,6 +18,9 @@ import java.util.List;
 
 @Service
 public class Courses {
+
+    private static Courses inst = null;
+
     private String endPoint = "oss-cn-shenzhen.aliyuncs.com"; //"oss-cn-shenzhen-internal.aliyuncs.com";
     private String bucketName = "alab-web";
     private String coursesLocation = "zm/courses/";
@@ -26,6 +29,11 @@ public class Courses {
 
 
     public Courses(){
+        inst = this;
+    }
+
+    public static Courses inst(){
+        return inst;
     }
 
     /***
@@ -159,8 +167,10 @@ public class Courses {
             JSONParser jsonParser = new JSONParser();
             JSONObject jsonObject = (JSONObject)jsonParser.parse( new InputStreamReader(inputStream, "UTF-8"));
 
-            lesson = new Lesson(jsonObject);
-            lesson.setUrl( rootURL + unitURL);
+            lesson = new Lesson();
+            lesson.setDomain( rootURL);
+            lesson.setOssUrl( unitURL);
+            lesson.setData( jsonObject);
 
             return lesson;
 
@@ -172,7 +182,23 @@ public class Courses {
             e.printStackTrace();
         }
 
-
         return lesson;
     }
+
+    /**
+     * 获取MarkDown内容
+     */
+    @Cacheable(value = "courses")
+    public String getMarkDown(String markDownUrl){
+        // 获取课程配置文件
+        OSSClient oss = new OSSClient( endPoint, accessKeyId, accessKeySecret);
+
+        OSSObject obj = oss.getObject(bucketName, markDownUrl);
+        InputStream inputStream = obj.getObjectContent();
+
+        String markdown = inputStream.toString();
+
+        return markdown;
+    }
+
 }

@@ -39,8 +39,7 @@
                 </c:when>
 
                 <c:when test="${exercise.type=='markdown'}">
-
-
+                    ${exercise.html}
                 </c:when>
 
                 <c:otherwise>
