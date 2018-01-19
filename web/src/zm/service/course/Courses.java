@@ -1,6 +1,7 @@
 package zm.service.course;
 
 import com.aliyun.oss.OSSClient;
+import com.aliyun.oss.common.utils.IOUtils;
 import com.aliyun.oss.model.OSSObject;
 import com.aliyun.oss.model.OSSObjectSummary;
 import com.aliyun.oss.model.ObjectListing;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,7 +34,7 @@ public class Courses {
         inst = this;
     }
 
-    public static Courses inst(){
+    public static Courses getInst(){
         return inst;
     }
 
@@ -196,9 +198,15 @@ public class Courses {
         OSSObject obj = oss.getObject(bucketName, markDownUrl);
         InputStream inputStream = obj.getObjectContent();
 
-        String markdown = inputStream.toString();
+        try{
+            String markdown = IOUtils.readStreamAsString(inputStream, "UTF-8");
+            return markdown;
 
-        return markdown;
+        } catch ( java.io.IOException e){
+            e.printStackTrace();
+        }
+
+        return "";
     }
 
 }

@@ -6,10 +6,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import zm.service.course.Courses;
-import zm.service.course.LessonMeta;
-import zm.service.course.UnitMeta;
-import zm.service.course.Lesson;
+import sun.jvm.hotspot.oops.Mark;
+import zm.service.course.*;
 
 import java.util.List;
 
@@ -19,6 +17,9 @@ public class ZMController {
 
     @Autowired
     private Courses courses;
+
+    @Autowired
+    private Markdown2Html m2hConverter;
 
     /***
      * 请求显示所有课程
