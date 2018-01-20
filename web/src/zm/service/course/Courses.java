@@ -72,7 +72,7 @@ public class Courses {
 
                 CourseMeta courseMeta = new CourseMeta();
                 courseMeta.setName(name);
-                courseMeta.setIcon(rootURL + location + "icon.png");
+                courseMeta.setIcon(rootURL + coursesLocation + location + "/icon.png");
                 courseMeta.setLink("/zm/course?name=" + location + "&edit=true");
 
                 courseMetas.add(courseMeta);

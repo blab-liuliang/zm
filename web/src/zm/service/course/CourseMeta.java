@@ -3,6 +3,7 @@ package zm.service.course;
 public class CourseMeta {
     private String name;
     private String icon;
+    private String desc;
     private String link;        // 链接显示单元内所有课程
 
     public String getName(){
@@ -21,7 +22,19 @@ public class CourseMeta {
         this.icon = icon;
     }
 
-    public String getLink(){return link;}
+    public String getLink(){
+        return link;
+    }
 
-    public void setLink(String link){ this.link=link; }
+    public void setLink(String link){
+        this.link=link;
+    }
+
+    public String getDesc(){
+        return desc;
+    }
+
+    public void setDesc(String desc){
+        this.desc = desc;
+    }
 }
