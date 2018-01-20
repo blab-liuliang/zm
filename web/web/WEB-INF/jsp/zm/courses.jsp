@@ -76,7 +76,7 @@
 
         <div class="row text-center">
             <c:forEach var="course" items="${courses}" varStatus="status">
-                <div class="col-md-4 mt-1 mb-1">
+                <div class="col-lg-4 mt-1 mb-1">
                     <div class = "card ">
                         <div class="card-body">
                             <img src="${course.icon}" class="img-fluid" alt="course image" />
