@@ -56,6 +56,10 @@
         .table th, .table td {
             border-top: none !important;
         }
+
+        .checked {
+            color: orange;
+        }
     </style>
 
 </head>
@@ -83,9 +87,17 @@
                     <div class = "card ">
                         <div class="card-body">
                             <img src="${course.icon}" class="img-fluid" alt="course image" />
-                            <h3 class="card-title mt-2">${course.name}</h3>
-                            <!--p class="card-text mt-3">wechat game development </p-->
-                            <a href="${course.link}" class="btn btn-primary">进入课程</a>
+                            <h3 class="card-title mt-2 text-center">${course.name}</h3>
+
+                            <div class="card-block">
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star"></span>
+                            </div>
+
+                            <a href="${course.link}" class="btn btn-primary mt-2">进入课程 >></a>
                         </div>
                     </div>
                 </div>
