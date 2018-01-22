@@ -17,6 +17,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 
+    <!--font awesome-->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
     <style>
         #custom-search-input{
             padding: 3px;
@@ -46,7 +49,7 @@
             border-left: solid 1px #ccc;
         }
 
-        #custom-search-input .glyphicon-search{
+        #custom-search-input .fa-search{
             font-size: 23px;
         }
 
@@ -65,7 +68,7 @@
                         <input type="text" class="form-control input-lg" placeholder="微信小游戏开发" />
                         <span class="input-group-btn">
                         <button class="btn btn-info btn-lg" type="button">
-                            <i class="glyphicon glyphicon-search"></i>
+                            <i class="fa fa-search"></i>
                         </button>
                     </span>
                     </div>
@@ -81,7 +84,7 @@
                         <div class="card-body">
                             <img src="${course.icon}" class="img-fluid" alt="course image" />
                             <h3 class="card-title mt-2">${course.name}</h3>
-                            <p class="card-text mt-3">This is the is the desc of courseThis is the desc of courseThis is the desc of courseThis is the desc of course </p>
+                            <!--p class="card-text mt-3">wechat game development </p-->
                             <a href="${course.link}" class="btn btn-primary">进入课程</a>
                         </div>
                     </div>
