@@ -64,7 +64,7 @@
 
 </head>
 <body>
-    <div class="container" >
+    <div class="container-fluid" >
         <div class="row mt-2 mb-2">
             <div class="col-md-12">
                 <div id="custom-search-input">
@@ -83,7 +83,7 @@
 
         <div class="row text-center">
             <c:forEach var="course" items="${courses}" varStatus="status">
-                <div class="col-lg-4 mt-1 mb-1">
+                <div class="col-lg-3 col-md-6 mt-1 mb-1">
                     <div class = "card ">
                         <div class="card-body">
                             <img src="${course.icon}" class="img-fluid" alt="course image" />
