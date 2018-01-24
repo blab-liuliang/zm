@@ -21,6 +21,16 @@ public class ZMController {
     @Autowired
     private Markdown2Html m2hConverter;
 
+
+    //
+    // 登录
+    //
+    @RequestMapping(value="/login", method = RequestMethod.GET)
+    public String login(ModelMap model) {
+
+        return "zm/login";
+    }
+
     /***
      * 请求显示所有课程
      * @param model

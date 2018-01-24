@@ -17,7 +17,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="container" >
+    <div class="container-fluid" >
         <c:forEach var="exercise" items="${lesson.exercises}" varStatus="status">
             <c:choose>
                 <c:when test="${exercise.type=='choice'}">
@@ -33,13 +33,19 @@
                 </c:when>
 
                 <c:when test="${exercise.type=='video'}">
-                    <video src="${exercise.url}" controls="controls">
+                    <div class="embed-responsive embed-responsive-16by9 mt-2 mb-2">
+                        <iframe class="embed-responsive-item" src="${exercise.url}"></iframe>
+                    </div>
+
+                    <!--video src="${exercise.url}" controls="controls">
                         您的浏览器不支持 video 标签。
-                    </video>
+                    </video-->
                 </c:when>
 
                 <c:when test="${exercise.type=='markdown'}">
-                    ${exercise.html}
+                    <div class="mt-2 mb-2">
+                        <span>${exercise.html}</span>
+                    </div>
                 </c:when>
 
                 <c:otherwise>
