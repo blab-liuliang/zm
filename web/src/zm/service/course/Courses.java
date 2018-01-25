@@ -73,7 +73,7 @@ public class Courses {
                 CourseMeta courseMeta = new CourseMeta();
                 courseMeta.setName(name);
                 courseMeta.setIcon(rootURL + coursesLocation + location + "/icon.png");
-                courseMeta.setLink("/zm/course?name=" + location + "&edit=true");
+                courseMeta.setLink("/zm/course?name=" + location);
 
                 courseMetas.add(courseMeta);
             }
@@ -88,6 +88,8 @@ public class Courses {
 
         return courseMetas;
     }
+
+    
 
     /***
      * 获取单元描述信息

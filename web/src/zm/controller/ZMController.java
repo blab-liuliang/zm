@@ -39,13 +39,14 @@ public class ZMController {
     @RequestMapping(value="/courses", method = RequestMethod.GET)
     public String getCourses(ModelMap model){
 
-       model.addAttribute("courses", courses.getCourseMetas());
+        model.addAttribute("courses", courses.getCourseMetas());
 
         return "zm/courses";
     }
 
     @RequestMapping(value="/courses/new", method=RequestMethod.GET)
     public String newCourse(ModelMap model){
+
         return "zm/course_new";
     }
 
@@ -56,9 +57,9 @@ public class ZMController {
      */
     @RequestMapping(value="/course", method = RequestMethod.GET)
     public String getCourse(ModelMap model,
-                            @RequestParam("name") String courseName,
-                            @RequestParam("edit") boolean edit){
+                            @RequestParam("name") String courseName){
 
+        model.addAttribute( "back_url", "/zm/courses");
         model.addAttribute( "courseName", courseName);
 
         List<UnitMeta> meta = courses.getUnitMetas(courseName);
@@ -81,6 +82,7 @@ public class ZMController {
                           @RequestParam("course") String courseName,
                           @RequestParam("unit") String unitName){
 
+        model.addAttribute( "back_url", "/zm/course?name=" + courseName);
         model.addAttribute( "unitIcon", courses.getUnitIconUrl(courseName, unitName));
 
         List<LessonMeta> lessonMetas = courses.getLessonMetas( courseName, unitName);
@@ -98,6 +100,7 @@ public class ZMController {
                             @RequestParam("unit") String unitName,
                             @RequestParam("lesson") String lessonName){
 
+        model.addAttribute( "back_url", "/zm/course?name=" + courseName + "&unit=" + unitName);
         Lesson lesson = courses.getLesson( courseName, unitName, lessonName);
         model.addAttribute("lesson", lesson);
 
