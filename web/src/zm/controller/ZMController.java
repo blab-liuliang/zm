@@ -103,6 +103,7 @@ public class ZMController {
         model.addAttribute( "back_url", "/zm/course?name=" + courseName + "&unit=" + unitName);
         Lesson lesson = courses.getLesson( courseName, unitName, lessonName);
         model.addAttribute("lesson", lesson);
+        model.addAttribute("is_edit", true);
 
         return "zm/lesson";
     }

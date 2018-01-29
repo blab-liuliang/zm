@@ -29,7 +29,7 @@
         </a>
     </nav>
 
-    <div class="container-fluid" >
+    <div class="container" >
         <c:forEach var="exercise" items="${lesson.exercises}" varStatus="status">
             <c:choose>
                 <c:when test="${exercise.type=='choice'}">
@@ -45,6 +45,14 @@
                 </c:when>
 
                 <c:when test="${exercise.type=='video'}">
+                    <c:if test="${is_edit}">
+                        <nav class="navbar navbar-light bg-faded mt-2">
+                            <a class="navbar-brand" href="${back_url}">
+                                <i class="fa fa-edit" style="color:#666666"></i>
+                            </a>
+                        </nav>
+                    </c:if>
+
                     <div class="embed-responsive embed-responsive-16by9 mt-2 mb-2">
                         <iframe class="embed-responsive-item" src="${exercise.url}"></iframe>
                     </div>
@@ -55,6 +63,14 @@
                 </c:when>
 
                 <c:when test="${exercise.type=='markdown'}">
+                    <c:if test="${is_edit}">
+                        <nav class="navbar navbar-light bg-faded mt-2">
+                            <a class="navbar-brand" href="${back_url}">
+                                <i class="fa fa-edit" style="color:#666666"></i>
+                            </a>
+                        </nav>
+                    </c:if>
+
                     <div class="mt-2 mb-2">
                         <span>${exercise.html}</span>
                     </div>
