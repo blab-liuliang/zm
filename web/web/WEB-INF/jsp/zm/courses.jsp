@@ -10,6 +10,8 @@
 <html>
 <head>
     <title>智盟教育</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="/RES/img/logo.ico" type="image/x-icon" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
@@ -64,7 +66,7 @@
 
 </head>
 <body>
-    <div class="container-fluid" >
+    <div class="container">
         <div class="row mt-2 mb-2">
             <div class="col-md-12">
                 <div id="custom-search-input">
@@ -83,7 +85,7 @@
 
         <div class="row text-center">
             <c:forEach var="course" items="${courses}" varStatus="status">
-                <div class="col-lg-3 col-md-6 mt-1 mb-1">
+                <div class="col-lg-4 col-sm-6 mt-1 mb-1">
                     <div class = "card ">
                         <div class="card-body">
                             <img src="${course.icon}" class="img-fluid" alt="course image" />

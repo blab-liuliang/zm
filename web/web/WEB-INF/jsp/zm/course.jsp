@@ -10,6 +10,8 @@
 <html>
 <head>
     <title>智盟教育 [${courseName}]</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="/RES/img/logo.ico" type="image/x-icon" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -26,11 +28,10 @@
         </a>
     </nav>
 
-
     <div class="container mt-5" >
         <div class="row">
             <c:forEach var="unitMeta" items="${unitMetas}" varStatus="status">
-                <div class="col-sm-6 col-md-6">
+                <div class="col-6 col-md-3">
                     <div class="thumbnail" align="center">
                         <a href="${unitMeta.link}">
                             <img src="${unitMeta.icon}">
