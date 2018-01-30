@@ -67,7 +67,7 @@
                     <div class="mt-2 mb-2 border">
                         <c:if test="${is_edit}">
                             <nav class="navbar navbar-light bg-faded">
-                                <a class="navbar-brand " href="/zm/edit">
+                                <a class="navbar-brand " href="/zm/edit?lesson_url=${lesson.ossUrl}&md_url=${exercise.url}">
                                     <i class="fa fa-edit" style="color:#666666"></i>
                                 </a>
                             </nav>

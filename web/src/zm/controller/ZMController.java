@@ -110,7 +110,11 @@ public class ZMController {
     }
 
     @RequestMapping(value="/edit", method = RequestMethod.GET)
-    public String edit(ModelMap model){
+    public String edit(ModelMap model,
+                       @RequestParam("lesson_url") String lesson_url,
+                       @RequestParam("md_url") String md_url){
+
+        model.addAttribute( "md_content", Courses.getInst().getMarkDown( lesson_url, md_url));
 
         return "zm/edit/md";
     }

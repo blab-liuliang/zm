@@ -32,7 +32,7 @@
 </head>
 <body>
     <div id="my-editormd" >
-        <textarea id="my-editormd-markdown-doc" name="my-editormd-markdown-doc" style="display:none;"></textarea>
+        <textarea id="my-editormd-markdown-doc" name="my-editormd-markdown-doc" style="display:none;">${md_content}</textarea>
         <!-- 注意：name属性的值-->
         <textarea id="my-editormd-html-code" name="my-editormd-html-code" style="display:none;"></textarea>
     </div>
