@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import sun.jvm.hotspot.oops.Mark;
+import sun.misc.Request;
 import zm.service.course.*;
 
 import java.util.List;
@@ -106,5 +107,11 @@ public class ZMController {
         model.addAttribute("is_edit", true);
 
         return "zm/lesson";
+    }
+
+    @RequestMapping(value="/edit", method = RequestMethod.GET)
+    public String edit(ModelMap model){
+
+        return "zm/edit/md";
     }
 }
