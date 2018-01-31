@@ -38,23 +38,13 @@
     <link rel="stylesheet" href="/RES/css/editormd/editormd.css" >
 </head>
 <body>
-    <div id="my-editormd" >
-        <textarea id="my-editormd-markdown-doc" name="my-editormd-markdown-doc" style="display:none;"></textarea>
-        <!-- 注意：name属性的值-->
-        <textarea id="my-editormd-html-code" name="my-editormd-html-code" style="display:none;"></textarea>
-    </div>
-
-    <div class="container-fluid">
-        <div class="row text-center">
-            <form:form method="post" action="/zm/modify_md" modelAttribute="markdown">
-                <form:input path="content" type="hidden" id="md_content" name="md_content" />
-                <script>
-                    var text = document.getElementByIdx_x("my-editormd-markdown-doc").value  //取得textarea的值
-                    document.getElementByIdx_x('md_content').value= text
-                </script>
-                <input type="submit" class="btn btn-primary" value="Submit">
-            </form:form>
+    <form:form method="post" action="/zm/modify_md" modelAttribute="markdown">
+        <div id="my-editormd" >
+            <form:textarea path="content" id="my-editormd-markdown-doc" name="my-editormd-markdown-doc" style="display:none;"></form:textarea>
+            <!-- 注意：name属性的值-->
+            <textarea id="my-editormd-html-code" name="my-editormd-html-code" style="display:none;"></textarea>
         </div>
-    </div>
+        <input type="submit" class="btn btn-primary" value="Submit">
+    </form:form>
 </body>
 </html>
