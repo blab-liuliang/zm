@@ -118,6 +118,8 @@ public class ZMController {
 
         MarkDown md = new MarkDown();
         md.setContent(Courses.getInst().getMarkDown( lesson_url, md_url));
+        md.setLessonUrl( lesson_url);
+        md.setUrl( md_url);
 
         model.addAttribute( "markdown", md);
 
@@ -132,6 +134,8 @@ public class ZMController {
         if (result.hasErrors()) {
             return "error";
         }
+
+        markdown.uploadToOss();
 
         return "SUCCESS";
     }
