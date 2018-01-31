@@ -3,13 +3,15 @@ package zm.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import sun.jvm.hotspot.oops.Mark;
 import sun.misc.Request;
 import zm.service.course.*;
+import zm.service.course.form.MarkDown;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -114,8 +116,23 @@ public class ZMController {
                        @RequestParam("lesson_url") String lesson_url,
                        @RequestParam("md_url") String md_url){
 
-        model.addAttribute( "md_content", Courses.getInst().getMarkDown( lesson_url, md_url));
+        MarkDown md = new MarkDown();
+        md.setContent(Courses.getInst().getMarkDown( lesson_url, md_url));
+
+        model.addAttribute( "markdown", md);
 
         return "zm/edit/md";
+    }
+
+    @RequestMapping(value = "/modify_md", method = RequestMethod.POST)
+    public @ResponseBody String modify_md(@ModelAttribute("markdown")MarkDown markdown,
+                                          BindingResult result,
+                                          ModelMap model){
+
+        if (result.hasErrors()) {
+            return "error";
+        }
+
+        return "SUCCESS";
     }
 }
