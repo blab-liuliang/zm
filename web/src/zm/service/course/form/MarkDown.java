@@ -33,6 +33,6 @@ public class MarkDown {
     }
 
     public void uploadToOss(){
-        Courses.getInst().putObjectString( lessonUrl + url, content);
+        Courses.getInst().putMarkDown( lessonUrl, url, content);
     }
 }

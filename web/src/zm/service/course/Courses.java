@@ -10,6 +10,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import zm.service.course.exercise.Exercise;
@@ -212,7 +213,7 @@ public class Courses {
     /**
      * 获取MarkDown内容
      */
-    @Cacheable(value = "courses")
+    @Cacheable(value = "markdown")
     public String getMarkDown( String ossUrl, String markDownName){
         // 获取课程配置文件
         OSSClient oss = new OSSClient( endPoint, accessKeyId, accessKeySecret);
@@ -239,11 +240,12 @@ public class Courses {
     /**
      * 上传字符串到OSS
      */
-    public void putObjectString( String key, String content){
+    @CacheEvict(value="markdown", allEntries=true)
+    public void putMarkDown( String ossUrl, String markDownName, String content){
 
         OSSClient oss = new OSSClient( endPoint, accessKeyId, accessKeySecret);
 
-        oss.putObject( bucketName, key, new ByteArrayInputStream( content.getBytes()));
+        oss.putObject( bucketName, ossUrl + markDownName, new ByteArrayInputStream( content.getBytes()));
 
         oss.shutdown();
     }
