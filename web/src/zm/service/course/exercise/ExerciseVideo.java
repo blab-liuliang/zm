@@ -1,6 +1,7 @@
 package zm.service.course.exercise;
 
 import org.json.simple.JSONObject;
+import zm.service.course.Courses;
 import zm.service.course.Lesson;
 
 public class ExerciseVideo extends Exercise{
@@ -15,6 +16,6 @@ public class ExerciseVideo extends Exercise{
     }
 
     public String getUrl(){
-        return lesson.getDomain() + lesson.getOssUrl() + url;
+        return Courses.getInst().getUnitHttpUrl( lesson.getCourseName(), lesson.getUnitName()) + url;
     }
 }

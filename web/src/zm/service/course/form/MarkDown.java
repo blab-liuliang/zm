@@ -5,8 +5,13 @@ import zm.service.course.Courses;
 
 public class MarkDown {
     private String content;
-    private String lessonUrl;       // 课程地址
-    private String url;             // 相对地址
+    private String courseName;
+    private String unitName;
+    private String lessonName;
+    private String markdownName;
+
+    public MarkDown(){
+    }
 
     public String getContent(){
         return content;
@@ -16,23 +21,40 @@ public class MarkDown {
         this.content = content;
     }
 
-    public String getLessonUrl(){
-        return lessonUrl;
+    public String getCourseName() {
+        return courseName;
     }
 
-    public void setLessonUrl(String lessonUrl){
-        this.lessonUrl = lessonUrl;
+    public void setCourseName(String courseName){
+        this.courseName = courseName;
     }
 
-    public String getUrl(){
-        return url;
+    public String getUnitName() {
+        return unitName;
     }
 
-    public void setUrl(String url){
-        this.url = url;
+    public void setUnitName(String unitName){
+        this.unitName = unitName;
+    }
+
+    public String getLessonName() {
+        return lessonName;
+    }
+
+    public void setLessonName(String lessonName){
+        this.lessonName = lessonName;
+    }
+
+    public String getMarkdownName() {
+        return markdownName;
+    }
+
+    public void setMarkdownName(String markdownName){
+        this.markdownName = markdownName;
     }
 
     public void uploadToOss(){
-        Courses.getInst().putMarkDown( lessonUrl, url, content);
+        Courses.getInst().putMarkDown( courseName, unitName, markdownName, content);
+        Courses.getInst().evicitLessonCache( courseName, unitName, lessonName);
     }
 }

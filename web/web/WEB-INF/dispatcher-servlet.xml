@@ -23,6 +23,9 @@
                     <property name="name" value="courses"></property>
                 </bean>
                 <bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean">
+                    <property name="name" value="lesson"></property>
+                </bean>
+                <bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean">
                     <property name="name" value="markdown"></property>
                 </bean>
             </set>

@@ -14,12 +14,16 @@ public class Lesson {
 
     private String title;
     private String desc;
-    private String domain;      // 域名
-    private String ossUrl;      // OSS存储课程地址
+    private String courseName;
+    private String unitName;
+    private String lessonName;
 
     List<Exercise> exercises = new ArrayList<>();
 
-    public Lesson(){
+    public Lesson(String courseName, String unitName, String lessonName){
+        this.courseName = courseName;
+        this.unitName = unitName;
+        this.lessonName = lessonName;
     }
 
     public void setData(JSONObject jsonObj){
@@ -63,23 +67,13 @@ public class Lesson {
         return this.desc;
     }
 
-    public void setDomain(String domain){
-        this.domain = domain;
-    }
-
-    public String getDomain(){
-        return this.domain;
-    }
-
-    public void setOssUrl(String url) {
-        this.ossUrl = url;
-    }
-
-    public String getOssUrl(){
-        return ossUrl;
-    }
-
     public List<Exercise> getExercises(){
         return this.exercises;
     }
+
+    public String getCourseName() {return  this.courseName;}
+
+    public String getUnitName() { return this.unitName;}
+
+    public String getLessonName() { return this.lessonName; }
 }

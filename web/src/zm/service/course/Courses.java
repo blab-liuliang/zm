@@ -17,6 +17,7 @@ import zm.service.course.exercise.Exercise;
 import zm.service.course.exercise.ExerciseChoice;
 import zm.service.course.exercise.ExerciseMarkDown;
 import zm.service.course.exercise.ExerciseVideo;
+import zm.service.course.form.MarkDown;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -130,10 +131,7 @@ public class Courses {
     // 获取单元图标链接地址
     public String getUnitIconUrl(String courseName, String unitName){
 
-        String rootURL = "http://" + bucketName + "." + endPoint + "/";
-        String unitLocation = coursesLocation + courseName + "/" + unitName + "/";
-
-        return rootURL + unitLocation + "icon.png";
+        return getUnitHttpUrl( courseName, unitName)+ "icon.png";
     }
 
     /**
@@ -169,11 +167,17 @@ public class Courses {
         return lessonMetas;
     }
 
+    public String getUnitHttpUrl(String courseName, String unitName){
+        String rootURL = "http://" + bucketName + "." + endPoint + "/";
+        String unitURL = coursesLocation + courseName + "/" + unitName + "/";
+
+        return rootURL + unitURL;
+    }
 
     /**
      * 获取课程内容
      */
-    @Cacheable(value = "courses")
+    //@Cacheable(value = "lesson")
     public Lesson getLesson(String courseName, String unitName, String lessonName){
 
         // 获取课程配置文件
@@ -192,9 +196,7 @@ public class Courses {
             JSONParser jsonParser = new JSONParser();
             JSONObject jsonObject = (JSONObject)jsonParser.parse( new InputStreamReader(inputStream, "UTF-8"));
 
-            lesson = new Lesson();
-            lesson.setDomain( rootURL);
-            lesson.setOssUrl( unitURL);
+            lesson = new Lesson(courseName, unitName, lessonName);
             lesson.setData( jsonObject);
 
             return lesson;
@@ -211,10 +213,21 @@ public class Courses {
     }
 
     /**
+     * 移除缓存
+     */
+    @CacheEvict(value="lesson", allEntries = true)
+    public void evicitLessonCache(String courseName, String unitName, String lessonName){
+
+    }
+
+    /**
      * 获取MarkDown内容
      */
-    @Cacheable(value = "markdown")
-    public String getMarkDown( String ossUrl, String markDownName){
+    @Cacheable(value = "markdown", key="#courseName + #unitName + #markDownName")
+    public MarkDown getMarkDown(String courseName, String unitName, String lessonName, String markDownName){
+
+        String ossUrl = coursesLocation + courseName + "/" + unitName + "/";
+
         // 获取课程配置文件
         OSSClient oss = new OSSClient( endPoint, accessKeyId, accessKeySecret);
 
@@ -222,32 +235,40 @@ public class Courses {
         InputStream inputStream = obj.getObjectContent();
 
         try{
-            String markdown = IOUtils.readStreamAsString(inputStream, "UTF-8");
+            String content = IOUtils.readStreamAsString(inputStream, "UTF-8");
 
             String rootURL = "http://" + bucketName + "." + endPoint + "/";
             String markdownUrl = rootURL + ossUrl;
-            markdown = markdown.replace("${OSS_CURRENT_DIR}/", markdownUrl);
+            content = content.replace("${OSS_CURRENT_DIR}/", markdownUrl);
 
-            return markdown;
+            MarkDown md = new MarkDown();
+            md.setContent( content);
+            md.setCourseName( courseName);
+            md.setUnitName( unitName);
+            md.setLessonName( lessonName);
+            md.setMarkdownName( markDownName);
+
+            return md;
 
         } catch ( java.io.IOException e){
             e.printStackTrace();
         }
 
-        return "";
+        return new MarkDown();
     }
 
     /**
      * 上传字符串到OSS
      */
-    @CacheEvict(value="markdown", allEntries=true)
-    public void putMarkDown( String ossUrl, String markDownName, String content){
+    @CacheEvict(value="markdown", key="#courseName + #unitName + #markDownName")
+    public void putMarkDown( String courseName, String unitName, String markDownName, String content){
+
+        String key = coursesLocation + courseName + "/" + unitName + "/" + markDownName;
 
         OSSClient oss = new OSSClient( endPoint, accessKeyId, accessKeySecret);
 
-        oss.putObject( bucketName, ossUrl + markDownName, new ByteArrayInputStream( content.getBytes()));
+        oss.putObject( bucketName, key, new ByteArrayInputStream( content.getBytes()));
 
         oss.shutdown();
     }
-
 }

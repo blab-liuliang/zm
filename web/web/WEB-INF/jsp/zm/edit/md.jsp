@@ -44,8 +44,10 @@
             <!-- 注意：name属性的值-->
             <textarea id="my-editormd-html-code" name="my-editormd-html-code" style="display:none;"></textarea>
         </div>
-        <form:input path="lessonUrl" hidden="true"></form:input>
-        <form:input path="url" hidden="true"></form:input>
+        <form:input path="courseName" hidden="true"></form:input>
+        <form:input path="unitName" hidden="true"></form:input>
+        <form:input path="lessonName" hidden="true"></form:input>
+        <form:input path="markdownName" hidden="true"></form:input>
         <input type="submit" class="btn btn-primary" value="Submit">
     </form:form>
 </body>
