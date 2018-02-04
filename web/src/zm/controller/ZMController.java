@@ -62,13 +62,27 @@ public class ZMController {
     public String getCourse(ModelMap model,
                             @RequestParam("name") String courseName){
 
-        model.addAttribute( "back_url", "/zm/courses");
-        model.addAttribute( "courseName", courseName);
+        List<UnitMeta> units = courses.getUnitMetas(courseName);
+        if( units.size()==1) {
+            String unitName = units.get(0).getName();
 
-        List<UnitMeta> meta = courses.getUnitMetas(courseName);
-        model.addAttribute("unitMetas", meta);
+            model.addAttribute( "back_url", "/zm/courses");
+            model.addAttribute( "unitIcon", courses.getUnitIconUrl(courseName, unitName));
 
-        return "zm/course";
+            List<LessonMeta> lessonMetas = courses.getLessonMetas( courseName, unitName);
+            model.addAttribute( "lessonMetas", lessonMetas);
+
+            return "zm/unit";
+        }
+        else {
+            model.addAttribute( "back_url", "/zm/courses");
+            model.addAttribute( "courseName", courseName);
+
+
+            model.addAttribute("unitMetas", units);
+
+            return "zm/course";
+        }
     }
 
     @RequestMapping(value = "/add_course", method = RequestMethod.GET)
