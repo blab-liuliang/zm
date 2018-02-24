@@ -30,5 +30,7 @@
     <a href="/doll/catch">Doll</a>
     <br />
     <a href="/doll/hevc">HEVC</a>
+    <br />
+    <a href="/echo/home">Echo</a>
 </body>
 </html>

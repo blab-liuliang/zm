@@ -9,9 +9,12 @@ import org.springframework.web.servlet.ModelAndView;
 import sun.jvm.hotspot.oops.Mark;
 import sun.misc.Request;
 import zm.service.course.*;
+import zm.service.course.account.User;
 import zm.service.course.form.MarkDown;
 
+import javax.jws.soap.SOAPBinding;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -29,10 +32,39 @@ public class ZMController {
     // 登录
     //
     @RequestMapping(value="/login", method = RequestMethod.GET)
-    public String login(ModelMap model) {
+    public String login(ModelMap model, HttpSession session) {
+
+        User.Account emptyAccount = new User.Account();
+
+        model.addAttribute( "account", emptyAccount);
 
         return "zm/login";
     }
+
+
+    /***
+     * 登录验证
+     */
+    @RequestMapping(value = "/login_verify", method = RequestMethod.POST)
+    public @ResponseBody String logined(@ModelAttribute("account") User.Account account,
+                                        BindingResult result,
+                                        ModelMap model,
+                                        HttpSession session){
+
+        if (result.hasErrors()) {
+            return "error";
+        }
+
+        User user = (User)session.getAttribute("user");
+        if(user==null)
+        {
+            session.setMaxInactiveInterval( 3600 * 2);
+            session.setAttribute( "user", new User());
+        }
+
+        return "SUCCESS";
+    }
+
 
     /***
      * 请求显示所有课程
@@ -115,7 +147,10 @@ public class ZMController {
     public String getLesson(ModelMap model,
                             @RequestParam("course") String courseName,
                             @RequestParam("unit") String unitName,
-                            @RequestParam("lesson") String lessonName){
+                            @RequestParam("lesson") String lessonName,
+                            HttpSession session){
+
+        User user = (User)session.getAttribute("user");
 
         model.addAttribute( "back_url", "/zm/course?name=" + courseName + "&unit=" + unitName);
         Lesson lesson = courses.getLesson( courseName, unitName, lessonName);

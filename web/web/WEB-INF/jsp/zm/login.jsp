@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%--
   Created by IntelliJ IDEA.
   User: ares
@@ -27,13 +28,13 @@
             <div class="card text-white p-5 bg-primary">
                 <div class="card-body">
                     <h1 class="mb-4">登录</h1>
-                    <form action="https://formspree.io/YOUREMAILHERE">
+                    <form:form method="post" action="/zm/login_verify" modelAttribute="account">
                         <div class="form-group"> <label>邮箱</label>
-                            <input type="email" class="form-control" placeholder="输入邮箱"> </div>
+                            <form:input path="email" type="email" class="form-control" placeholder="输入邮箱"></form:input> </div>
                         <div class="form-group"> <label>密码</label>
-                            <input type="password" class="form-control" placeholder="输入密码"> </div>
-                        <button type="submit" class="btn btn-secondary">登陆</button>
-                    </form>
+                            <form:input path="password" type="password" class="form-control" placeholder="输入密码"></form:input> </div>
+                        <input type="submit" class="btn btn-secondary">登陆</input>
+                    </form:form>
                 </div>
             </div>
         </div>
