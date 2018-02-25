@@ -40,6 +40,11 @@ public class Courses {
 
     public Courses(){
         inst = this;
+
+        String osName = System.getProperties().getProperty("os.name");
+        if(osName.equals("Linux")){
+            this.endPoint = "oss-cn-shenzhen-internal.aliyuncs.com";
+        }
     }
 
     public static Courses getInst(){
