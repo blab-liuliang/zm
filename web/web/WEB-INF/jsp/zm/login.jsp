@@ -28,12 +28,12 @@
             <div class="card text-white p-5 bg-primary">
                 <div class="card-body">
                     <h1 class="mb-4">登录</h1>
-                    <form:form method="post" action="/zm/login_verify" modelAttribute="account">
+                    <form:form method="post" action="/zm/login_by_email_verify" modelAttribute="loginByEmail">
                         <div class="form-group"> <label>邮箱</label>
                             <form:input path="email" type="email" class="form-control" placeholder="输入邮箱"></form:input> </div>
                         <div class="form-group"> <label>密码</label>
                             <form:input path="password" type="password" class="form-control" placeholder="输入密码"></form:input> </div>
-                        <input type="submit" class="btn btn-secondary">登陆</input>
+                        <input type="submit" class="btn btn-secondary" value="登陆"></input>
                     </form:form>
                 </div>
             </div>

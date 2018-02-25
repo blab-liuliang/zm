@@ -10,6 +10,7 @@ import sun.jvm.hotspot.oops.Mark;
 import sun.misc.Request;
 import zm.service.course.*;
 import zm.service.course.account.User;
+import zm.service.course.form.LoginByEmail;
 import zm.service.course.form.MarkDown;
 
 import javax.jws.soap.SOAPBinding;
@@ -31,12 +32,12 @@ public class ZMController {
     //
     // 登录
     //
-    @RequestMapping(value="/login", method = RequestMethod.GET)
-    public String login(ModelMap model, HttpSession session) {
+    @RequestMapping(value="/login_by_email", method = RequestMethod.GET)
+    public String login_by_email(ModelMap model, HttpSession session) {
 
-        User.Account emptyAccount = new User.Account();
+        LoginByEmail loginByEmail = new LoginByEmail();
 
-        model.addAttribute( "account", emptyAccount);
+        model.addAttribute( "loginByEmail", loginByEmail);
 
         return "zm/login";
     }
@@ -45,8 +46,8 @@ public class ZMController {
     /***
      * 登录验证
      */
-    @RequestMapping(value = "/login_verify", method = RequestMethod.POST)
-    public @ResponseBody String logined(@ModelAttribute("account") User.Account account,
+    @RequestMapping(value = "/login_by_email_verify", method = RequestMethod.POST)
+    public @ResponseBody String logined(@ModelAttribute("loginByEmail") LoginByEmail loginByEmail,
                                         BindingResult result,
                                         ModelMap model,
                                         HttpSession session){
