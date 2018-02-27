@@ -32,5 +32,7 @@
     <a href="/doll/hevc">HEVC</a>
     <br />
     <a href="/echo/home">Echo</a>
+    <br />
+    <a href="http://alab-web.oss-cn-shenzhen.aliyuncs.com/game/00001_tb/web-mobile/index.html">TowerBuild</a>
 </body>
 </html>
