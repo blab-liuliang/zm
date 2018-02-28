@@ -5,16 +5,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
-import sun.jvm.hotspot.oops.Mark;
-import sun.misc.Request;
 import zm.service.course.*;
 import zm.service.course.account.User;
 import zm.service.course.form.LoginByEmail;
 import zm.service.course.form.MarkDown;
+import zm.dao.UserDao;
 
-import javax.jws.soap.SOAPBinding;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -27,6 +23,9 @@ public class ZMController {
 
     @Autowired
     private Markdown2Html m2hConverter;
+
+    @Autowired
+    private UserDao userDao;
 
 
     //
