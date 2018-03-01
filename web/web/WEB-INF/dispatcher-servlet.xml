@@ -45,7 +45,7 @@
 
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
         <property name="driverClass" value="com.mysql.jdbc.Driver"></property>
-        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/zm"></property>
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/zm?createDatabaseIfNotExist=true"></property>
         <property name="user" value="root"></property>
         <property name="password" value=""></property>
     </bean>
