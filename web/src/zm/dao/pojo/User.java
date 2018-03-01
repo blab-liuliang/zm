@@ -3,11 +3,12 @@ package zm.dao.pojo;
 import javax.persistence.*;
 
 @Entity
-@Table(name="User")
+@Table(name="USER")
 public class User {
 
-    @Id @GeneratedValue
+    @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int      id;
 
     @Column(name = "uuid")

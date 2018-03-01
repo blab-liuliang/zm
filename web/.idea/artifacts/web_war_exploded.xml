@@ -41,6 +41,8 @@
           <element id="file-copy" path="$PROJECT_DIR$/lib/hibernate/optional/c3p0/hibernate-c3p0-5.2.13.Final.jar" />
           <element id="file-copy" path="$PROJECT_DIR$/lib/hibernate/optional/c3p0/mchange-commons-java-0.2.11.jar" />
           <element id="file-copy" path="$PROJECT_DIR$/lib/postgresql/postgresql-42.1.1.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/postgresql/postgresql-42.2.1.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/mysql/mysql-connector-java-5.1.45-bin.jar" />
         </element>
       </element>
     </root>

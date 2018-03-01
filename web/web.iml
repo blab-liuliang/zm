@@ -249,7 +249,16 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/lib/postgresql/postgresql-42.1.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/postgresql/postgresql-42.2.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/mysql/mysql-connector-java-5.1.45-bin.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

@@ -38,6 +38,10 @@ public class ZMController {
 
         model.addAttribute( "loginByEmail", loginByEmail);
 
+        zm.dao.pojo.User user = new zm.dao.pojo.User();
+        user.setUuid("xxxx");
+        userDao.saveUser( user);
+
         return "zm/login";
     }
 
